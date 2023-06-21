@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <style>
+         h1 {
+            width: 100%;
+            text-align: center;
+        }
+        main{
+            width: 100%;
+            align-items: center;
+            text-align: center;
+            color: black;
+        }
+        main>form{
+            display: inline-block;
+            background-color: antiquewhite;
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome on the register page!
+    </h1>
+    <main>
+        <form action="/createAccount" method="POST">
+            <div><input type="text" name="nick">Username</div>
+            <div><input type="text" name="password">Password</div>
+            <div><input type="text" name="passwordConfirm">Confirm password</div>
+            <div><input type="submit" value="Sign Up"></div>
+        </form>
+    </main>
+</body>
+</html>
