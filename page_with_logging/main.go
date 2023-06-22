@@ -41,14 +41,14 @@ func getStrings(filename string) []string {
 
 func handleMain(writer http.ResponseWriter,
 	request *http.Request){
-		tmpl, err := template.ParseFiles("index.html")
+		tmpl, err := template.ParseFiles("htmls/index.html")
 		errorCheck(err)
 		err = tmpl.Execute(writer, nil)
 	}
 
 func handleCreate(writer http.ResponseWriter,
 	request *http.Request){
-		tmpl, err := template.ParseFiles("create.html")
+		tmpl, err := template.ParseFiles("htmls/create.html")
 		errorCheck(err)
 
 		nick := request.FormValue("nick")
@@ -59,7 +59,7 @@ func handleCreate(writer http.ResponseWriter,
 		if password != nick && passwordConfirm == password && match == true{
 				options := os.O_APPEND | os.O_WRONLY
 	
-				file, err := os.OpenFile("database.txt", options,os.FileMode(0600))
+				file, err := os.OpenFile("htmls/database.txt", options,os.FileMode(0600))
 				errorCheck(err)
 
 				_, err = fmt.Fprintf(file,"%s %s\n",nick,password)
@@ -81,13 +81,13 @@ func handleCreate(writer http.ResponseWriter,
 
 func handleLogin(writer http.ResponseWriter,
 	request *http.Request){
-		tmpl, err := template.ParseFiles("login.html")
+		tmpl, err := template.ParseFiles("htmls/login.html")
 		errorCheck(err)
 		
 		nick := request.FormValue("nick")
 		password := request.FormValue("password")
 		
-		loginVals := getStrings("database.txt")
+		loginVals := getStrings("htmls/database.txt")
 		
 		for _, v:= range loginVals{
 			item := strings.Split(v, " ")
@@ -106,28 +106,28 @@ func handleLogin(writer http.ResponseWriter,
 
 func handleFailedLogin(writer http.ResponseWriter,
 	request *http.Request){
-		tmpl, err := template.ParseFiles("failedLogin.html")
+		tmpl, err := template.ParseFiles("htmls/failedLogin.html")
 		errorCheck(err)
 		err = tmpl.Execute(writer, nil)
 	}
 
 func handleFailed(writer http.ResponseWriter,
 	request *http.Request){
-		tmpl, err := template.ParseFiles("failed.html")
+		tmpl, err := template.ParseFiles("htmls/failed.html")
 		errorCheck(err)
 		err = tmpl.Execute(writer, nil)
 	}
 
 func handleErrorWithLogging(writer http.ResponseWriter,
 	request *http.Request){
-		tmpl, err := template.ParseFiles("notlogin.html")
+		tmpl, err := template.ParseFiles("htmls/notlogin.html")
 		errorCheck(err)
 		err = tmpl.Execute(writer, nil)
 	}
 
 func handleNotFinished(writer http.ResponseWriter,
 	request *http.Request){
-		tmpl, err := template.ParseFiles("notFinished.html")
+		tmpl, err := template.ParseFiles("htmls/notFinished.html")
 		errorCheck(err)
 		err = tmpl.Execute(writer, nil)
 	}
@@ -137,7 +137,7 @@ func handleSuccess(writer http.ResponseWriter,
 		if logged == false {
 			http.Redirect(writer, request, "/login/notLoggedIn", http.StatusFound)
 		}else if logged == true {
-			tmpl, err := template.ParseFiles("success.html")
+			tmpl, err := template.ParseFiles("htmls/success.html")
 			errorCheck(err)
 			err = tmpl.Execute(writer, nil)
 		}
@@ -148,7 +148,7 @@ func handleSuccessReg(writer http.ResponseWriter,
 		if finished == false {
 			http.Redirect(writer, request, "/createAccount/notFinishedForm",http.StatusFound)
 		}else if finished == true {
-			tmpl, err := template.ParseFiles("successRegistered.html")
+			tmpl, err := template.ParseFiles("htmls/successRegistered.html")
 			errorCheck(err)
 			err = tmpl.Execute(writer, nil)
 		}
