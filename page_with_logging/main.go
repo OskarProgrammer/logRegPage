@@ -8,6 +8,7 @@ import(
 	"fmt"
 	"bufio"
 	"strings"
+	"regexp"
 )
 func errorCheck(err error){
 	if err != nil{
@@ -50,8 +51,9 @@ func handleCreate(writer http.ResponseWriter,
 		nick := request.FormValue("nick")
 		password := request.FormValue("password")
 		passwordConfirm := request.FormValue("passwordConfirm")
+		match, err := regexp.MatchString("^[a-zA-Z0-9][^!@^&*#$%]{1,20}$", password)
 
-		if password != nick && passwordConfirm == password {
+		if password != nick && passwordConfirm == password && match == true{
 				options := os.O_APPEND | os.O_WRONLY
 	
 				file, err := os.OpenFile("database.txt", options,os.FileMode(0600))
@@ -63,7 +65,11 @@ func handleCreate(writer http.ResponseWriter,
 				err = file.Close()
 				errorCheck(err)
 
-				http.Redirect(writer, request, "/successRegistered", http.StatusFound)
+				http.Redirect(writer, request, "/createAccount/successRegistered", http.StatusFound)
+		}else if (passwordConfirm != password || match == true) && nick != password{
+			http.Redirect(writer, request, "/createAccount/failedRegistered", http.StatusFound)
+		}else if (passwordConfirm == password || match != true) && nick != password{
+			http.Redirect(writer, request, "/createAccount/failedRegistered", http.StatusFound)
 		}
 		err = tmpl.Execute(writer, nil)
 	}
@@ -82,11 +88,27 @@ func handleLogin(writer http.ResponseWriter,
 			item := strings.Split(v, " ")
 			if nick==item[0] && password==item[1]{
 				fmt.Printf("%s with password %s logged in\n",nick,password)
-				http.Redirect(writer, request, "/successLogin", http.StatusFound)
+				http.Redirect(writer, request, "/login/successLogin", http.StatusFound)
 			}
-			
 		}
-		// fmt.Printf("%#v\n", loginVals)
+		var i int = 1
+		if nick != password && i == 1{
+			http.Redirect(writer, request, "/login/failedLogin", http.StatusFound)
+		}
+		err = tmpl.Execute(writer, nil)
+	}
+
+func handleFailedLogin(writer http.ResponseWriter,
+	request *http.Request){
+		tmpl, err := template.ParseFiles("failedLogin.html")
+		errorCheck(err)
+		err = tmpl.Execute(writer, nil)
+	}
+
+func handleFailed(writer http.ResponseWriter,
+	request *http.Request){
+		tmpl, err := template.ParseFiles("failed.html")
+		errorCheck(err)
 		err = tmpl.Execute(writer, nil)
 	}
 
@@ -106,10 +128,14 @@ func handleSuccessReg(writer http.ResponseWriter,
 
 func main(){
 	http.HandleFunc("/", handleMain)
-	http.HandleFunc("/createAccount", handleCreate)
 	http.HandleFunc("/login", handleLogin)
-	http.HandleFunc("/successLogin",handleSuccess)
-	http.HandleFunc("/successRegistered",handleSuccessReg)
+	http.HandleFunc("/createAccount", handleCreate)
+
+	http.HandleFunc("/login/successLogin",handleSuccess)
+	http.HandleFunc("/createAccount/successRegistered",handleSuccessReg)
+
+	http.HandleFunc("/login/failedLogin",handleFailedLogin)
+	http.HandleFunc("/createAccount/failedRegistered",handleFailed)
 
 	err := http.ListenAndServe("localhost:8080", nil)
 	log.Fatal(err)

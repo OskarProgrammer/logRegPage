@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Failed login!</title>
+    <style>
+        h1 {
+            width: 100%;
+            text-align: center;
+            color: red;
+        }
+    
+        main {
+            width: 100%;
+            align-items: center;
+            text-align: center;
+            color: black;
+        }
+    
+        main>form {
+            display: inline-block;
+            background-color: antiquewhite;
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h1>OPS something went wrong ! Nickname or password was invalid<br>
+    Try again!</h1>
+    <main>
+        <form action="/login" method="POST">
+            <div><input type="text" name="nick">Nickname</div>
+            <div><input type="text" name="password">Password</div>
+            <div><input type="submit" value="Sign In"></div>
+        </form>
+    </main>
+</body>
+</html>
