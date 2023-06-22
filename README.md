@@ -11,3 +11,6 @@ username123 programming
 root sudo
 
 VERY IMPORMANT TO PLACE SPACE BETWEEN NICKNAME AND PASSWORD
+
+Regexp for registration page:
+^[a-zA-Z0-9][^!@^&*#$%]{1,20}$
