@@ -5,25 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Failed registration</title>
     <style>
-        h1 {
+         h1 {
             width: 100%;
             text-align: center;
             color: red;
         }
-    
-        main {
+        main{
             width: 100%;
             align-items: center;
             text-align: center;
             color: black;
         }
-    
-        main>form {
+        main>form{
             display: inline-block;
             background-color: antiquewhite;
             width: 300px;
             height: 300px;
         }
+        main > form > div {
+            font-size: 25px;
+            padding-top: 10px;
+        }
+        .przycisk{
+            width: 200px;
+            background: green;
+            font-size: 25px;
+        }
+        .input {
+            width: 200px;
+        }
+        .input:hover{
+            background-color: rgb(106, 89, 66);
+            color: yellow;
+        }
+
     </style>
 </head>
 <body>
@@ -31,10 +46,10 @@
     Try again!</h1>
     <main>
         <form action="/createAccount" method="POST">
-            <div><input type="text" name="nick">Username</div>
-            <div><input type="text" name="password">Password</div>
-            <div><input type="text" name="passwordConfirm">Confirm password</div>
-            <div><input type="submit" value="Sign Up"></div>
+            <div><input type="text" name="nick" class="input"><br>Username</div>
+            <div><input type="text" name="password" class="input"><br>Password</div>
+            <div><input type="text" name="passwordConfirm" class="input"><br>Confirm password</div>
+            <div><input type="submit" value="Sign Up" class="przycisk"></div>
         </form>
     </main>
 </body>

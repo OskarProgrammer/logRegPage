@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log in</title>
+    <title>Login Page</title>
     <style>
         h1 {
             width: 100%;
@@ -21,6 +21,15 @@
             width: 300px;
             height: 300px;
         }
+        main > form > div {
+            font-size: 25px;
+            padding: 20px 20px 20px 20px;
+        }
+        .przycisk{
+            width: 200px;
+            background: green;
+            font-size: 25px;
+        }
 
     </style>
 </head>
@@ -30,7 +39,7 @@
         <form action="/login" method="POST">
             <div><input type="text" name="nick">Nickname</div>
             <div><input type="text" name="password">Password</div>
-            <div><input type="submit" value="Sign In"></div>
+            <div><input type="submit" value="Sign In" class="przycisk"></div>
         </form>
     </main>
 </body>
