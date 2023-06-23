@@ -183,5 +183,5 @@ func main(){
 	http.HandleFunc("/createAccount/successRegistered/reset",handleReset)
 
 	err := http.ListenAndServe("localhost:8080", nil)
-	log.Fatal(err)
+	log.Fatal(err) 
 }
