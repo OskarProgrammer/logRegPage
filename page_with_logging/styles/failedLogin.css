@@ -1,0 +1,19 @@
+h1 {
+    width: 100%;
+    text-align: center;
+    color: red;
+}
+
+main {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    color: black;
+}
+
+main>form {
+    display: inline-block;
+    background-color: antiquewhite;
+    width: 300px;
+    height: 300px;
+}

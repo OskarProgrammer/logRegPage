@@ -1,0 +1,38 @@
+h1 {
+     width: 100%;
+     text-align: center;
+ }
+
+main {
+     width: 100%;
+     align-items: center;
+     text-align: center;
+     color: black;
+ }
+
+main>form {
+     display: inline-block;
+     background-color: antiquewhite;
+     width: 300px;
+     height: 300px;
+ }
+
+main>form>div {
+     font-size: 25px;
+     padding-top: 10px;
+ }
+
+.przycisk {
+     width: 200px;
+     background: green;
+     font-size: 25px;
+ }
+
+.input {
+     width: 200px;
+ }
+
+.input:hover {
+     background-color: rgb(106, 89, 66);
+     color: yellow;
+ }

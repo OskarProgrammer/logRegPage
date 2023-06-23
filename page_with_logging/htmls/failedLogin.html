@@ -6,24 +6,24 @@
     <title>Failed login!</title>
     <style>
         h1 {
-            width: 100%;
-            text-align: center;
-            color: red;
-        }
-    
-        main {
-            width: 100%;
-            align-items: center;
-            text-align: center;
-            color: black;
-        }
-    
-        main>form {
-            display: inline-block;
-            background-color: antiquewhite;
-            width: 300px;
-            height: 300px;
-        }
+    width: 100%;
+    text-align: center;
+    color: red;
+}
+
+main {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    color: black;
+}
+
+main>form {
+    display: inline-block;
+    background-color: antiquewhite;
+    width: 300px;
+    height: 300px;
+}
     </style>
 </head>
 <body>
@@ -32,7 +32,7 @@
     <main>
         <form action="/login" method="POST">
             <div><input type="text" name="nick">Nickname</div>
-            <div><input type="text" name="password">Password</div>
+            <div><input type="password" name="password">Password</div>
             <div><input type="submit" value="Sign In"></div>
         </form>
     </main>

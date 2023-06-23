@@ -6,39 +6,42 @@
     <title>Login Page</title>
     <style>
         h1 {
-            width: 100%;
-            text-align: center;
-        }
-        main{
-            width: 100%;
-            align-items: center;
-            text-align: center;
-            color: black;
-        }
-        main>form{
-            display: inline-block;
-            background-color: antiquewhite;
-            width: 300px;
-            height: 300px;
-        }
-        main > form > div {
-            font-size: 25px;
-            padding: 20px 20px 20px 20px;
-        }
-        .przycisk{
-            width: 200px;
-            background: green;
-            font-size: 25px;
-        }
+    width: 100%;
+    text-align: center;
+}
 
+main {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    color: black;
+}
+
+main>form {
+    display: inline-block;
+    background-color: antiquewhite;
+    width: 300px;
+    height: 300px;
+}
+
+main>form>div {
+    font-size: 25px;
+    padding: 20px 20px 20px 20px;
+}
+
+.przycisk {
+    width: 200px;
+    background: green;
+    font-size: 25px;
+}
     </style>
 </head>
 <body>
     <h1>Welcome on the login page</h1>
     <main>
         <form action="/login" method="POST">
-            <div><input type="text" name="nick">Nickname</div>
-            <div><input type="text" name="password">Password</div>
+            <div>Nickname<input type="text" name="nick"></div>
+            <div>Password<input type="password" name="password"></div>
             <div><input type="submit" value="Sign In" class="przycisk"></div>
         </form>
     </main>
